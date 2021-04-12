@@ -15,7 +15,7 @@ export default {
 </script>
 
 <style scoped lang="less">
-@import url("../assets/styles/vars.less");
+@import url("~styles/vars.less");
 a {
   color: @my-theme-color;
 }
