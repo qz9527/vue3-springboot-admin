@@ -1,9 +1,10 @@
 <template>
-<<<<<<< HEAD
   <div style="height: 100%">
     <el-container>
       <el-aside class="aside">
-          <hello-world msg="hhhhhh"></hello-world>
+        <side-bar></side-bar>
+            <span>{{store.state.appName}}</span>
+            <span></span>
           <back-top></back-top>
       </el-aside>
       <el-container>
@@ -24,20 +25,24 @@
 
 <script>
 import { reactive, toRefs, onBeforeMount, onMounted } from "vue";
-import HelloWorld from "../../components/HelloWorld.vue";
+import { useStore } from "vuex"
 import AppMain from '../../components/layout/app-main.vue';
 import backTop from '../../components/layout/back-top.vue';
+import SideBar from '../../components/layout/side-bar.vue';
 export default {
   name: "Home",
   components: {
-    HelloWorld,
     AppMain,
-    backTop
+    backTop,
+    SideBar
   },
   setup() {
+    const store = useStore()
     console.log("1-开始创建组件-setup");
     const data = reactive({});
     onBeforeMount(() => {
+      console.log(store.state.user) // 模块下的state
+      console.log(store.getters['user/logined']) // 模块下调用方法
       console.log("2.组件挂载页面之前执行----onBeforeMount");
     });
     onMounted(() => {
@@ -45,22 +50,10 @@ export default {
     });
     return {
       ...toRefs(data),
+      store
     };
   },
 };
 </script>
 <style scoped lang='less'>
-=======
-  <div>home</div>
-</template>
-
-<script>
-export default {
-
-}
-</script>
-
-<style>
-
->>>>>>> c55ff3366647614c6fddfc3935ba03ac1859e59f
 </style>
