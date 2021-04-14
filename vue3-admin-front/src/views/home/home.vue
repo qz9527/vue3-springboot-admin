@@ -1,4 +1,5 @@
 <template>
+<<<<<<< HEAD
   <div style="height: 100%">
     <el-container>
       <el-aside class="aside">
@@ -49,4 +50,17 @@ export default {
 };
 </script>
 <style scoped lang='less'>
+=======
+  <div>home</div>
+</template>
+
+<script>
+export default {
+
+}
+</script>
+
+<style>
+
+>>>>>>> c55ff3366647614c6fddfc3935ba03ac1859e59f
 </style>
