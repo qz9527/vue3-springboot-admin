@@ -11,19 +11,86 @@
       @close="handleClose"
       :collapse="isCollapse"
     >
-      <el-submenu index="1">
+      <template v-for="item in routes">
+        <!-- 一级菜单 -->
+        <el-submenu
+          v-if="item.children"
+          :key="item.name"
+          :index="item.name"
+          class="subMenuContent"
+        >
+          <template #title>
+            <i class="el-icon-location"></i>
+            <span>{{ item.name }}</span>
+          </template>
+          <!-- <el-menu-item index="1-4-1">选项1</el-menu-item> -->
+
+          <!-- 二级菜单 -->
+          <template v-for="subItem in item.children">
+            <el-submenu
+              v-if="subItem.children"
+              :key="subItem.name"
+              :index="subItem.name"
+              class="subMenuContent"
+            >
+              <template #title>
+                <i class="el-icon-location"></i>
+                <span>{{ subItem.name }}</span>
+                <!-- 三级菜单 -->
+                <template>
+                  <router-link
+                    v-for="grandchildItem in subItem.children"
+                    :key="grandchildItem.name"
+                    :to="grandchildItem.path"
+                    class="circle third"
+                  >
+                    <el-menu-item
+                      :index="grandchildItem.name"
+                      style="padding-left: 80px"
+                      class="subMenuContent"
+                    >
+                      {{ grandchildItem.name }}
+                    </el-menu-item>
+                  </router-link>
+                </template>
+              </template>
+              <!-- 三级菜单 -->
+            </el-submenu>
+            <!-- 二级else -->
+            <router-link
+              :to="subItem.path"
+              :key="subItem.name"
+              class="circle"
+              v-else
+            >
+            
+              <el-menu-item
+                :index="item.name"
+                style="padding-left: 60px"
+                class="subMenuContent"
+              >
+                {{ item.name }}
+              </el-menu-item>
+            </router-link>
+          </template>
+        </el-submenu>
+        <!-- 一级else -->
+        <router-link :to="item.path" :key="item.name" class="circle" v-else>
+          <el-menu-item
+            :index="item.name"
+            style="padding-left: 60px"
+            class="subMenuContent"
+          >
+          <i class="el-icon-setting"></i>
+            {{ item.name }}
+          </el-menu-item>
+        </router-link>
+      </template>
+      <!-- <el-submenu index="1">
         <template #title>
           <i class="el-icon-location"></i>
           <span>导航一</span>
         </template>
-        <!-- <el-menu-item-group>
-          <template #title>分组一</template>
-          <el-menu-item index="1-1" @click="tolog">选项1</el-menu-item>
-          <el-menu-item index="1-2">选项2</el-menu-item>
-        </el-menu-item-group> -->
-        <!-- <el-menu-item-group title="分组2">
-          <el-menu-item index="1-3">选项3</el-menu-item>
-        </el-menu-item-group> -->
         <el-submenu index="1-4">
           <template #title>选项4</template>
           <el-menu-item index="1-4-1">选项1</el-menu-item>
@@ -40,31 +107,50 @@
       <el-menu-item index="4">
         <i class="el-icon-setting"></i>
         <template #title>导航四</template>
-      </el-menu-item>
+      </el-menu-item> -->
     </el-menu>
   </div>
 </template>
 
 <script>
 import { reactive, toRefs, onBeforeMount, onMounted } from "vue";
-import {useRouter} from 'vue-router'
+import { useRouter } from "vue-router";
+import routes from '@/router/route'
 export default {
   name: "",
   setup() {
-    const router = useRouter()
-    function tolog(){
-      router.push('/log')
+    const router = useRouter();
+    function tolog() {
+      router.push("/log");
     }
+    // const routes = [
+    //   {
+    //     path: "/",
+    //     name: "Home",
+    //     redirect: "/about",
+    //     component: () => import("@/views/home/home"),
+    //   },
+    //   {
+    //     path: "/login",
+    //     name: "login",
+    //     component: () => import("@/views/login/login"),
+    //   },
+    //   {
+    //     // redirect: '/404',
+    //     path: "/:pathMatch(.*)*",
+    //     name: "404",
+    //     component: () => import("@/views/error-page/404"),
+    //   },
+    // ];
     const data = reactive({
       isCollapse: false,
+      routes,
     });
-    onBeforeMount(() => {
-    });
-    onMounted(() => {
-    });
+    onBeforeMount(() => {});
+    onMounted(() => {});
     return {
       ...toRefs(data),
-      tolog
+      tolog,
     };
   },
 };
@@ -73,5 +159,27 @@ export default {
 .el-menu-vertical-demo:not(.el-menu--collapse) {
   width: 200px;
   min-height: 400px;
+  text-align: left;
 }
+.subMenuContent {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+ .circle {
+    .el-menu-item {
+      position: relative;
+
+      &:before {
+        content: "";
+        width: 4px;
+        height: 4px;
+        border-radius: 50%;
+        border: 1px solid @submenu-title;
+        position: absolute;
+        left: 45px;
+        top: 23px;
+      }
+    }
+ }
 </style>

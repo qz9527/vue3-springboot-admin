@@ -3,9 +3,7 @@
     <el-container>
       <el-aside class="aside">
         <side-bar></side-bar>
-            <span>{{store.state.appName}}</span>
-            <span></span>
-          <back-top></back-top>
+        <back-top></back-top>
       </el-aside>
       <el-container>
         <el-header class="header">
@@ -14,7 +12,6 @@
         </el-header>
         <el-main ref="main">
             <app-main ref="appMain"></app-main>
-            
         </el-main>
         <back-top :right="50" :bottom="50" :fontSize="34"></back-top>
       </el-container>
