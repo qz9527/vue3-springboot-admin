@@ -31,5 +31,5 @@ See [Configuration Reference](https://cli.vuejs.org/config/).
 ### 功能列表
 1.配置全局less vue.config.js
 2.文件別名配置 vue.config.js
-3.element-plus 实现按需加载
+3.element-plus 实现按需加载 国际化
 
