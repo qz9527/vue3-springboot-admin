@@ -40,6 +40,7 @@ export default {
     onBeforeMount(() => {
       console.log(store.state.user) // 模块下的state
       console.log(store.getters['user/logined']) // 模块下调用方法
+      console.log(store.getters)
       console.log("2.组件挂载页面之前执行----onBeforeMount");
     });
     onMounted(() => {
