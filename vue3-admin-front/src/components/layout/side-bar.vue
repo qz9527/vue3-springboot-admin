@@ -11,17 +11,18 @@
       @close="handleClose"
       :collapse="isCollapse"
     >
-      <template v-for="item in routes">
+      <template v-for="item in sideBarList">
         <!-- 一级菜单 -->
         <el-submenu
+          style="padding-left:40px"
           v-if="item.children"
           :key="item.name"
           :index="item.name"
           class="subMenuContent"
         >
-          <template #title>
-            <i class="el-icon-location"></i>
-            <span>{{ item.name }}</span>
+          <template #title >
+            <i :class="item.icon"></i>
+            <span>{{ item.title }}</span>
           </template>
           <!-- <el-menu-item index="1-4-1">选项1</el-menu-item> -->
 
@@ -35,7 +36,7 @@
             >
               <template #title>
                 <i class="el-icon-location"></i>
-                <span>{{ subItem.name }}</span>
+                <span>{{ subItem.title }}</span>
                 <!-- 三级菜单 -->
                 <template>
                   <router-link
@@ -45,11 +46,11 @@
                     class="circle third"
                   >
                     <el-menu-item
-                      :index="grandchildItem.name"
+                      :index="grandchildItem.meta.name"
                       style="padding-left: 80px"
                       class="subMenuContent"
                     >
-                      {{ grandchildItem.name }}
+                      {{ grandchildItem.meta.title }}
                     </el-menu-item>
                   </router-link>
                 </template>
@@ -63,13 +64,14 @@
               class="circle"
               v-else
             >
-            
+             
               <el-menu-item
-                :index="item.name"
+                :index="subItem.name"
                 style="padding-left: 60px"
                 class="subMenuContent"
               >
-                {{ item.name }}
+               <!-- <i :class="subItem.icon"></i> -->
+                {{ subItem.title }}
               </el-menu-item>
             </router-link>
           </template>
@@ -81,33 +83,11 @@
             style="padding-left: 60px"
             class="subMenuContent"
           >
-          <i class="el-icon-setting"></i>
-            {{ item.name }}
+            <i class="el-icon-setting"></i>
+            {{ item.title }}
           </el-menu-item>
         </router-link>
       </template>
-      <!-- <el-submenu index="1">
-        <template #title>
-          <i class="el-icon-location"></i>
-          <span>导航一</span>
-        </template>
-        <el-submenu index="1-4">
-          <template #title>选项4</template>
-          <el-menu-item index="1-4-1">选项1</el-menu-item>
-        </el-submenu>
-      </el-submenu>
-      <el-menu-item index="2">
-        <i class="el-icon-menu"></i>
-        <template #title>导航二</template>
-      </el-menu-item>
-      <el-menu-item index="3" disabled>
-        <i class="el-icon-document"></i>
-        <template #title>导航三</template>
-      </el-menu-item>
-      <el-menu-item index="4">
-        <i class="el-icon-setting"></i>
-        <template #title>导航四</template>
-      </el-menu-item> -->
     </el-menu>
   </div>
 </template>
@@ -115,33 +95,18 @@
 <script>
 import { reactive, toRefs, onBeforeMount, onMounted } from "vue";
 import { useRouter } from "vue-router";
-import routes from '@/router/route'
+import routes from "@/router/route";
+import { mapGetters, useStore } from "vuex";
 export default {
   name: "",
   setup() {
+    const store = useStore();
     const router = useRouter();
     function tolog() {
       router.push("/log");
     }
-    // const routes = [
-    //   {
-    //     path: "/",
-    //     name: "Home",
-    //     redirect: "/about",
-    //     component: () => import("@/views/home/home"),
-    //   },
-    //   {
-    //     path: "/login",
-    //     name: "login",
-    //     component: () => import("@/views/login/login"),
-    //   },
-    //   {
-    //     // redirect: '/404',
-    //     path: "/:pathMatch(.*)*",
-    //     name: "404",
-    //     component: () => import("@/views/error-page/404"),
-    //   },
-    // ];
+    console.log(routes);
+    console.log(store.getters);
     const data = reactive({
       isCollapse: false,
       routes,
@@ -152,6 +117,9 @@ export default {
       ...toRefs(data),
       tolog,
     };
+  },
+  computed: {
+    ...mapGetters(["sideBarList"]),
   },
 };
 </script>
@@ -166,20 +134,20 @@ export default {
   text-overflow: ellipsis;
   white-space: nowrap;
 }
- .circle {
-    .el-menu-item {
-      position: relative;
+.circle {
+  .el-menu-item {
+    position: relative;
 
-      &:before {
-        content: "";
-        width: 4px;
-        height: 4px;
-        border-radius: 50%;
-        border: 1px solid @submenu-title;
-        position: absolute;
-        left: 45px;
-        top: 23px;
-      }
+    &:before {
+      content: "";
+      width: 4px;
+      height: 4px;
+      border-radius: 50%;
+      border: 1px solid @submenu-title;
+      position: absolute;
+      left: 45px;
+      top: 23px;
     }
- }
+  }
+}
 </style>

@@ -1,5 +1,5 @@
-// import adminConfig from './admin'
-// import bookConfig from './book' // 引入图书管理路由文件
+import adminConfig from './admin'
+import bookConfig from './book' // 引入图书管理路由文件
 
 
 let homeRouter = [
@@ -42,8 +42,8 @@ let homeRouter = [
     inNav: false,
     icon: 'iconfont icon-rizhiguanli',
   },
-//   bookConfig,
-//   adminConfig,
+  bookConfig,
+  adminConfig,
 ]
 
 export default homeRouter
