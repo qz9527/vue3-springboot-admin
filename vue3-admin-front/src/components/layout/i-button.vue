@@ -1,6 +1,10 @@
 <template>
   <div>
-     <h2>{{ $t("i18n.title1") }}</h2>
+      <el-button
+      type="primary"
+      @click="$i18n.locale = $i18n.locale === 'zh-cn' ? 'en' : 'zh-cn'"
+      >{{ $t("i18n.btn") }}</el-button
+    >
   </div>
 </template>
 

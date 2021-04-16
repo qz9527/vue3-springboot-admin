@@ -8,6 +8,8 @@
       <el-container>
         <el-header class="header">
           <div class="left">
+            <ibutton></ibutton>
+            <reuse-tab></reuse-tab>
           </div>
         </el-header>
         <el-main ref="main">
@@ -26,12 +28,16 @@ import { useStore } from "vuex"
 import AppMain from '../../components/layout/app-main.vue';
 import backTop from '../../components/layout/back-top.vue';
 import SideBar from '../../components/layout/side-bar.vue';
+import Ibutton from '../../components/layout/i-button.vue'
+import ReuseTab from '../../components/layout/reuse-tab.vue';
 export default {
   name: "Home",
   components: {
     AppMain,
     backTop,
-    SideBar
+    SideBar,
+    Ibutton,
+    ReuseTab
   },
   setup() {
     const store = useStore()
