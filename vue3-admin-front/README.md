@@ -32,4 +32,7 @@ See [Configuration Reference](https://cli.vuejs.org/config/).
 1.配置全局less vue.config.js
 2.文件別名配置 vue.config.js
 3.element-plus 实现按需加载 国际化
-
+4.菜单栏配置，历史导航功能
+5.全屏功能
+6.历史导航
+7.面包屑导航

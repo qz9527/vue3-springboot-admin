@@ -4,7 +4,7 @@ import bookConfig from './book' // 引入图书管理路由文件
 
 let homeRouter = [
   {
-    title: '林间有风',
+    title: '首页', 
     type: 'view',
     name: Symbol('about'),
     route: '/about',
