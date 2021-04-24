@@ -1,6 +1,12 @@
 export default {
     'zh-cn': {
         i18n: {
+            route:{
+                about:"首页",
+                book:"书籍管理",
+                BookCreate:"创建书籍",
+                BookList:"图书列表"
+            },
             breadcrumb: '国际化产品',
             tips: '通过切换语言按钮，来改变当前内容的语言。',
             btn: '切换英文',
@@ -12,6 +18,12 @@ export default {
     },
     'en': {
         i18n: {
+            route:{
+                about:"about",
+                book:"book",
+                BookCreate:"BookCreate",
+                BookList:"BookList"
+            },
             breadcrumb: 'International Products',
             tips: 'Click on the button to change the current language. ',
             btn: 'Switch Chinese',

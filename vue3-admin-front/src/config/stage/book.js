@@ -1,6 +1,6 @@
 const bookRouter = {
     route: null,
-    name: null,
+    name: "book",
     title: '图书管理',
     type: 'folder', // 类型: folder, tab, view
     icon: 'el-icon-notebook-1',

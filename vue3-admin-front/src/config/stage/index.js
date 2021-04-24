@@ -6,7 +6,7 @@ let homeRouter = [
   {
     title: '首页', 
     type: 'view',
-    name: Symbol('about'),
+    name: 'about',
     route: '/about',
     filePath: 'views/about/about.vue',
     inNav: true,
