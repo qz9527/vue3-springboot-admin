@@ -1,6 +1,12 @@
 <template>
   <div>
-    <el-tag class="tags" closable v-for="tag in histories" :key="tag.path" :type="tag.type">
+    <el-tag
+      class="tags"
+      closable
+      v-for="tag in histories"
+      :key="tag.path"
+      :type="tag.type"
+    >
       <router-link class="tag-item" :to="tag.path">
         <span class="button">{{ tag.title }}</span></router-link
       >
@@ -20,7 +26,6 @@ export default {
     watch(
       () => route.path,
       () => {
-        // histories.push(route.path)
         const ele = {};
         ele.stageId = route.name;
         ele.path = route.path;
@@ -34,14 +39,9 @@ export default {
         }
       }
     );
-    console.log("1-开始创建组件-setup");
     const data = reactive({});
-    onBeforeMount(() => {
-      console.log("2.组件挂载页面之前执行----onBeforeMount");
-    });
-    onMounted(() => {
-      console.log("3.-组件挂载到页面之后执行-------onMounted");
-    });
+    onBeforeMount(() => {});
+    onMounted(() => {});
     return {
       ...toRefs(data),
       histories,
@@ -59,7 +59,7 @@ export default {
   border: none;
   position: relative;
 }
-.tags{
+.tags {
   margin-right: 10px;
 }
 .tag-item {
@@ -67,7 +67,7 @@ export default {
   width: 60px;
   padding: 5px 0px 5px 5px;
 }
-.button{
+.button {
   border: 1px solid #ccc;
   padding: 5px;
 }

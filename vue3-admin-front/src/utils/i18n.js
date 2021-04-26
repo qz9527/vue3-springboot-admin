@@ -5,7 +5,8 @@ export default {
                 about:"首页",
                 book:"书籍管理",
                 BookCreate:"创建书籍",
-                BookList:"图书列表"
+                BookList:"图书列表",
+                i18n:"国际化"
             },
             breadcrumb: '国际化产品',
             tips: '通过切换语言按钮，来改变当前内容的语言。',
@@ -21,6 +22,7 @@ export default {
             route:{
                 about:"about",
                 book:"book",
+                i18n:"internatonal",
                 BookCreate:"BookCreate",
                 BookList:"BookList"
             },
