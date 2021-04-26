@@ -1,6 +1,7 @@
 export default {
     'zh-cn': {
         i18n: {
+            button: '国际化',
             breadcrumb: '国际化产品',
             tips: '通过切换语言按钮，来改变当前内容的语言。',
             btn: '切换英文',
@@ -12,6 +13,7 @@ export default {
     },
     'en': {
         i18n: {
+            button: 'International',
             breadcrumb: 'International Products',
             tips: 'Click on the button to change the current language. ',
             btn: 'Switch Chinese',

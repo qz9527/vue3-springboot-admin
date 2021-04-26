@@ -80,7 +80,9 @@
             class="subMenuContent"
           >
             <i class="el-icon-setting"></i>
+            <!-- {{$t(item.title)}} -->
             {{ item.title }}
+            {{sideBarList}}
           </el-menu-item>
         </router-link>
       </template>

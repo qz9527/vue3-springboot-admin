@@ -6,12 +6,22 @@ let homeRouter = [
   {
     title: '首页', 
     type: 'view',
-    name: Symbol('about'),
+    name: 'about',
     route: '/about',
     filePath: 'views/about/about.vue',
     inNav: true,
     icon: 'iconfont icon-iconset0103',
     order: 1,
+  },
+  {
+    title: "国际化", 
+    type: 'view',
+    name: 'i18n',
+    route: '/i18n',
+    filePath: 'views/i18n-page/i18n.vue',
+    inNav: true,
+    icon: 'iconfont icon-iconset0103',
+    order: 2,
   },
   {
     title: '日志管理',
