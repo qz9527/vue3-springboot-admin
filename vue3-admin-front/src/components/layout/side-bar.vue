@@ -18,7 +18,7 @@
         >
           <template #title >
             <i :class="item.icon"></i>
-            <span>{{ item.title }}</span>
+            <span>{{ $t(`i18n.route.${item.name}`) }}</span>
           </template>
           <!-- <el-menu-item index="1-4-1">选项1</el-menu-item> -->
 
@@ -67,7 +67,8 @@
                 class="subMenuContent"
               >
                <!-- <i :class="subItem.icon"></i> -->
-                {{ subItem.title }}
+               {{ $t(`i18n.route.${subItem.name}`) }}
+                <!-- {{ subItem.title }} -->
               </el-menu-item>
             </router-link>
           </template>
@@ -80,9 +81,8 @@
             class="subMenuContent"
           >
             <i class="el-icon-setting"></i>
-            <!-- {{$t(item.title)}} -->
-            {{ item.title }}
-            {{sideBarList}}
+            {{ $t(`i18n.route.${item.name}`) }}
+            <!-- {{item.name}} -->
           </el-menu-item>
         </router-link>
       </template>
