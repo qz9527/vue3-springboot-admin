@@ -5,6 +5,8 @@ function resolve(dir) {
 
 // 配置全局less变量
 module.exports = {
+    lintOnSave: true,
+    publicPath: './',
     pluginOptions: { // 第三方插件配置
         'style-resources-loader': {
             preProcessor: 'less',

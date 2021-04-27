@@ -12,12 +12,13 @@ const routes = [
     path: '/login',
     name: 'login',
     component: () => import('@/views/login/login'),
-  },
-  {
-    // redirect: '/404',
-    path: "/:pathMatch(.*)*",
-    component: ()=> import('@/views/error-page/404')
-  },
+  }
+  ,
+  // {
+  //   // redirect: '/404',
+  //   path: "/:pathMatch(.*)*",
+  //   component: ()=> import('@/views/error-page/404')
+  // },
 ]
 
 export default routes
