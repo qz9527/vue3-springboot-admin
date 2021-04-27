@@ -17,10 +17,10 @@ export default {
     const data = reactive({ isFullscreen: false });
     onBeforeMount(() => {});
     onMounted(() => {
+      console.log('111')
       if (screenfull.isEnabled) {
         screenfull.on("change", change);
       }
-      screenfull.toggle();
     });
     onDeactivated(() => {
       if (screenfull.isEnabled) {
