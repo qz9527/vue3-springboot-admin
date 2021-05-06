@@ -29,6 +29,12 @@ module.exports = {
                 // 'router': '@/router'
             }
         }
-    }
+    },
+    devServer: {
+        overlay: {
+        warnings: true,
+        errors: true,
+        },
+  },
 }
 

@@ -73,7 +73,7 @@ export default {
   display: flex;
 }
 .aside {
-  background: rgb(25, 42, 94);
+  // background: rgb(25, 42, 94);
   overflow-x: hidden;
   width: 200px !important;
   padding-right: 10px;

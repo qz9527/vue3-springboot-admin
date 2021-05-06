@@ -14,21 +14,61 @@
         <li>8.国际化</li>
       </ul>
     </div>
+    <div id="customerChart" :style="{ width: '300px', height: '300px' }">
+    </div>
+    <div id="chart1" :style="{ width: '300px', height: '300px' }">
+    </div>
   </div>
 </template>
 
 <script>
-import { reactive, toRefs, onBeforeMount, onMounted } from "vue";
+import { reactive,inject, toRefs, onBeforeMount, onMounted } from "vue";
 export default {
   name: "",
   setup() {
-    console.log("1-开始创建组件-setup");
+    let echarts = inject("ec")
     const data = reactive({});
     onBeforeMount(() => {
-      console.log("2.组件挂载页面之前执行----onBeforeMount");
     });
     onMounted(() => {
-      console.log("3.-组件挂载到页面之后执行-------onMounted");
+      let myChart = echarts.init(document.getElementById("customerChart"));
+      let chart1 = echarts.init(document.getElementById("chart1"));
+      myChart.setOption({
+        title: { text: "总用户量" },
+        tooltip: {},
+        xAxis: {
+          data: ["12-3", "12-4", "12-5", "12-6", "12-7", "12-8"],
+        },
+        yAxis: {},
+        series: [
+          {
+            name: "用户量",
+            type: "line",
+            data: [5, 20, 36, 10, 10, 20],
+          },
+        ],
+      });
+      chart1.setOption({
+    series : [
+        {
+            name: '访问来源',
+            type: 'pie',
+            radius: '55%',
+            roseType: 'angle',
+            data:[
+                {value:235, name:'视频广告'},
+                {value:274, name:'联盟广告'},
+                {value:310, name:'邮件营销'},
+                {value:335, name:'直接访问'},
+                {value:400, name:'搜索引擎'}
+            ]
+        }
+    ]
+})
+      window.onresize = function () {//自适应大小
+        myChart.resize();
+        chart1.resize();
+      };
     });
     return {
       ...toRefs(data),
