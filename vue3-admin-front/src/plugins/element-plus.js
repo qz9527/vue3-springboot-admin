@@ -4,9 +4,12 @@
 // import 'element-plus/packages/theme-chalk/src/base.scss'
 import 'element-plus/lib/theme-chalk/index.css'
 import { createI18n } from 'vue-i18n'
-import localeZH from 'element-plus/lib/locale/lang/zh-cn'
-import localeEN from 'element-plus/lib/locale/lang/en'
+// import localeZH from 'element-plus/lib/locale/lang/zh-cn'
+// import localeEN from 'element-plus/lib/locale/lang/en'
+import enLocale from 'element-plus/lib/locale/lang/en'
+import zhLocale from 'element-plus/lib/locale/lang/zh-cn'
 import messages from '../utils/i18n'
+// import ElementPlus from 'element-plus'
 import {
     ElAlert,
     ElAside,
@@ -183,8 +186,8 @@ const plugins = [
 ]
 
 const i18n = createI18n({
-    locale: localeZH.name,
-    fallbackLocale: localeEN.name,
+    locale: zhLocale.name,
+    fallbackLocale: enLocale.name,
     messages,
 })
 
@@ -197,6 +200,5 @@ export default (app) => {
     plugins.forEach(plugin => {
         app.use(plugin)
     })
-
     app.use(i18n)
 }

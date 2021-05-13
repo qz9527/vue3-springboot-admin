@@ -1,5 +1,7 @@
 <template>
-  <div class="container">create</div>
+  <div class="container">create
+            <el-button>测试</el-button>
+  </div>
 </template>
 
 <script>

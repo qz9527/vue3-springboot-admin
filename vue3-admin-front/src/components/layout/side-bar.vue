@@ -113,7 +113,7 @@ export default {
     onMounted(() => {});
     return {
       ...toRefs(data),
-      tolog,
+      tolog
     };
   },
   computed: {
